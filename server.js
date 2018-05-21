@@ -64,6 +64,17 @@ app.get('/feed.html', function (req, res) {
     res.sendFile(__dirname + '/pages/feed.html')
 })
 
+app.get('/feedinfo', (req,res) => {
+    db.collection('darknessprevailssubmissions').find().sort({ 'submitdate': -1 }).toArray((err, results) => {
+        if(results.length) {
+            res.contentType('application/json');
+            var data = JSON.stringify(results)
+            res.header('Content-Length', data.length);
+            res.end(data);
+        }
+    })
+})
+
 app.post('/getlogin', (req, res) => {
     finduserwithemail(req.body, res); 
 })

@@ -4,38 +4,39 @@ if(window.localStorage.username == null){
     var username = window.localStorage.username;
 }
 
+//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions?s={'submitdate':-1}&apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 $.ajax({
-	url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions?s={'submitdate':-1}&apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-	method: 'get',
+	url: "/feedinfo",
+    method: 'get',
 	success: function(data){
-        console.log(data[0]._id.$oid);
+        console.log(data[0]._id);
         console.log(data);
 		$('#outerstorycont').html(
-		`<div class="container" onclick='gotoread("`+data[0]._id.$oid+`")'>
+		`<div class="container" onclick='gotoread("`+data[0]._id+`")'>
 			 <div class="story">
 			<div class="entrytext">
 					<p class="title">`+data[0].title+`</p>
 					<p class="authordate"> By `+data[0].penname+` on `+fixdate(data[0].submitdate)+`<br>
 `+data[0].category+` | `+(data[0].views).length+` View(s) </p>
 			</div>
-			<div class="votes"> <button id="upvote" class="upvote" type="image" onclick='upvote(event, "`+data[0]._id.$oid+`")'></button>
-					<p class="votecount" id="`+ data[0]._id.$oid+`">`+data[0].votes+`</p>
-				<button id="downvote" class="downvote" onclick='downvote(event, "`+data[0]._id.$oid+`")'></button> </div>
+			<div class="votes"> <button id="upvote" class="upvote" type="image" onclick='upvote(event, "`+data[0]._id+`")'></button>
+					<p class="votecount" id="`+ data[0]._id+`">`+data[0].votes+`</p>
+				<button id="downvote" class="downvote" onclick='downvote(event, "`+data[0]._id+`")'></button> </div>
 		<hr class="break"> </div>
 	</div>`
 		)
 		for(i=1;i<data.length;i++){
 			$('#outerstorycont').append(
-			`<div class="container" onclick='gotoread("`+data[i]._id.$oid+`")'>
+			`<div class="container" onclick='gotoread("`+data[i]._id+`")'>
 			 <div class="story">
 			<div class="entrytext">
 					<p class="title">`+data[i].title+`</p>
 					<p class="authordate"> By `+data[i].penname+` on `+fixdate(data[i].submitdate)+`<br>
 `+ data[i].category + ` | ` +  (data[i].views).length   +` View(s) </p>
 			</div>
-			<div class="votes"> <button id="upvote" class="upvote" type="image" onclick='upvote(event, "`+ data[i]._id.$oid +`")'></button>
-					<p class="votecount" id="`+ data[i]._id.$oid +`">`+data[i].votes+`</p>
-				<button id="downvote" class="downvote" onclick='downvote(event, "`+ data[i]._id.$oid +`")'></button> </div>
+			<div class="votes"> <button id="upvote" class="upvote" type="image" onclick='upvote(event, "`+ data[i]._id +`")'></button>
+					<p class="votecount" id="`+ data[i]._id +`">`+data[i].votes+`</p>
+				<button id="downvote" class="downvote" onclick='downvote(event, "`+ data[i]._id +`")'></button> </div>
 		<hr class="break"> </div>
 	</div>`
 		)
