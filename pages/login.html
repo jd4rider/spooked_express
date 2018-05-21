@@ -1,0 +1,167 @@
+<!--<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbxp4J35GEX0kStnqmNzXOhnlb8sE3EQJz_liImN8GCAVnU40jH0/exec">
+  <input type="email" name="email" id="email" placeholder="email">
+  <input type="submit">
+</form>-->
+
+<!DOCTYPE html>
+<html style="    height: 100%; width: 100%;">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title></title>
+    <style>
+       
+  .login {
+      background: url(/images/login/background_login.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+      
+  .title {
+      font-family: Jura;
+      font-size: 45px;
+      color: white;
+      text-align: center;
+      text-shadow: 0px 0px 20px black, 0px 0px 2px black, 0px 0px 1px black;
+      margin-top: 0px;
+  }
+      
+  .hook {
+      font-family: Jura;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      margin-top: -25px;
+      text-shadow: 0px 0px 2px black, 0px 0px 2px black;
+  }
+	.loginbutton {
+      color: white;
+      font-family: Jura;
+      font-size: 18px;
+      width: 74%;
+      height: 35px;
+      margin-left: 13%;
+      margin-right: 13%;
+      border-radius: 5px;
+      background-image: linear-gradient(to right, rgba(124,0,255,0.7) 100%, rgba(255,0,255,0.7) 100%);
+      border: none;
+      opacity: 0.85;
+  }
+      
+	.signupbutton {
+      color: white;
+      font-family: Jura;
+      font-size: 18px;
+      width: 74%;
+      height: 35px;
+      margin-left: 13%;
+      margin-right: 13%;
+      border-radius: 5px;
+      background-image: linear-gradient(to right, rgba(180,0,0,0.7) 100%, rgba(0,0,132,0.8) 100%);
+      border: none;
+      margin-top: 10px;
+      opacity: 0.85;
+  }
+
+  .buttons {
+    position:absolute;
+    bottom: 10%;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+      
+  .useragreement {
+      border: none;
+      color: white;
+      font-family: Jura;
+      font-size: 10px;
+      background-color: rgba(0,0,0,0.0);
+      text-align: center;
+      position:absolute;
+      bottom: 4%;
+      text-align: center;
+      margin: auto;
+      margin-top: 30px;
+      width: 100%;
+  }
+        
+ input { 
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    text-shadow: 0px 0px 1px white;
+}
+
+input[type=email] {
+    width: 95%;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+    
+}
+
+input[id=username] {
+    width: 95%;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+    
+}
+        
+ h2 {
+    color: gray;
+    font-family: Jura;
+    font-size: 25px
+    text-shadow: 0px 0px 3px black, 0px 0px 3px black;
+}
+      
+      
+  </style>
+  </head>
+  <body class="login" style="    height: 100%; width: 100%; margin: auto;">
+    <div class="toptext">
+      <p class="title"><br>
+        Welcome </p>
+      <p class="hook"> Horror exists all around you. </p>
+      <p class="hook">Magically paswordless</p>
+        <p class="hook">Enter your email and click 'Login' and you will be sent a unique link to the app</p>
+    </div>
+    <div style="display:none;" class="toptext" id="thankyou_message">
+        <p class="hook"><em>Thanks!</em> A unique login link has been emailed to you!</p>  
+    </div>
+    <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbxp4J35GEX0kStnqmNzXOhnlb8sE3EQJz_liImN8GCAVnU40jH0/exec">
+        <h2>Email*</h2>
+        <input type="email" name="email" id="email" placeholder="Enter your email">
+        <h2>Username*</h2>
+        <input type="text" name="username" id="username" placeholder="Enter your username">
+        <div class="buttons"><input class="loginbutton" type="submit" value="Login"></div>
+    </form>
+    <!--<div class="buttons"> <button class="loginbutton"> Login </button><br>
+      <button class="signupbutton"> Sign Up </button> </div>-->
+    <button class="useragreement" onclick="alertfunction()"> By signing up or
+      using this app, you agree to the terms of service*</button>
+    <script>
+      function alertfunction() {
+        alert("Test");
+      }
+</script>
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+      <script data-cfasync="false" type="text/javascript"
+src="/js/login.js"></script>
+  </body>
+</html>

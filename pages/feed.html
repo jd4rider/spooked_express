@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spooked - Submission Form</title>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "75px";
+            document.getElementById("main").style.marginLeft = "75px";
+            document.getElementById("feed").style.marginLeft = "90px";
+            document.body.style.backgroundColor = "black";
+            document.getElementById("menubutton").style.width = "0";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.getElementById("feed").style.marginLeft = "0";
+            document.body.style.backgroundColor = "black";
+            document.getElementById("menubutton").style.width = "50px";
+        }
+    </script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="/js/feed.js"></script>
+  </head>
+  <body class="feed" id="feed">
+    <div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn"
+
+        onclick="closeNav()"></a> <a href="loginpage.html" class="loginpage"></a>
+      <label class="loginlabel">Login</label> <a href="feedpage.html" class="feedpage"></a>
+      <label class="readlabel">Read</label> <a href="submitpage.html" class="submitpage"></a>
+      <label class="submitlabel">Submit</label> </div>
+
+    <div class="filter"> <label>Filter&#8801;</label> </div>
+    <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    
+    <style>
+
+.filter {
+  color: #a0a0a0;
+  text-align: center;
+  font-family: Jura;
+  font-size: 18px;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  background-color: black;
+  width: 100%;
+  height: 25px;
+  vertical-align: middle;
+  box-shadow: 0px 0px 4px black, 0px 0px 4px black inset;
+  letter-spacing: 2px;
+}
+      
+.loginlabel {
+  text-align: center;
+  margin-left: 12px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.readlabel {
+  text-align: center;
+  margin-left: 14px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.submitlabel {
+  text-align: center;
+  margin-left: 6px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.loginpage {
+    background-image: url(login.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: 0px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+      
+.feedpage {
+    background-image: url(read.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+      
+.submitpage {
+    background-image: url(submit.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+
+.menubutton {
+    background-image: url(https://www.ap.org/about/annual-report/2016/globals/icons/svg/icon-menu/icon-menu-transparent.svg);
+    height: 50px;
+    width: 50px;
+    left: 15px;
+    margin-top: 5px;
+    z-index: 1001;
+}
+      
+.closebtn {
+    background-image: url(https://www.ap.org/about/annual-report/2016/globals/icons/svg/icon-menu/icon-menu-transparent.svg);
+    height: 34px;
+    width: 34px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1001;
+
+}
+
+.sidenav {
+    z-index: 1001;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+      z-index: 1001;
+
+}
+
+.sidenav a:hover {
+    color: green;
+      z-index: 1001;
+
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+      z-index: 1001;
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}       
+               
+*:focus {
+  outline: none;
+}
+        
+.feed {
+  background: url(/images/feed/background_feed.jpg);
+  transition: 0.5s;
+  height: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin-top: 25px;
+}
+  
+.title {
+
+    color: white;
+    font-family: Jura;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: -5px;
+    margin-top: 0px;
+    
+
+}
+
+.authordate {
+
+    color: gray;
+    font-family: Jura;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: -10px;
+    margin-top: 5px;
+
+  
+}
+
+.upvote {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-image: url(/images/feed/upvote_empty.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 20px 20px;
+    border: none;
+}
+
+.downvote {
+    width: 20px;
+    height: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-image: url(/images/feed/downvote_empty.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 20px 20px;
+    border: none;
+    margin: auto;
+}
+
+.story {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    background-color: #333333;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0px 0px 3px #000000, 0px 0px 5px #000000, 0px 0px 17px #000000;
+
+}
+
+.entrytext {
+  margin-right: 20%;
+  margin-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
+
+.votes {
+  font-color: white;  
+  margin-top: -60px;
+  margin-bottom: 5px;
+  margin-left: 90%;
+  text-align: center;
+  top: 0px;
+  margin-right: 10px;
+}
+
+.votecount {
+  color: white;
+  font-family: Jura;
+  font-size: 13px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.break {
+ margin: auto;
+ width: 100%;
+ border: 0;
+ height: 0px;
+ background-image: linear-gradient(to right, gray, black, gray); 
+ margin-top: 0px;
+ opacity: 0.5;
+}
+      
+.menubutton {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  margin-left: -2px;
+  margin-top: 0%;
+  z-index: 1000;
+  top: 0px;
+  overflow: hidden;
+}
+
+.menucontainer {
+  width: 100%;
+  height: 50px;
+  margin-left: -8px;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  background-color: gray;
+  z-index: 100;
+  background-image: url(/images/feed/background_menu.jpg);
+  box-shadow: 0px 0px 25px black;
+  background-size: 100% auto;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.logotext {
+  color: white;
+  text-align: center;
+  font-family: Jura;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 7px;
+  text-shadow: 0px 0px 4px black, 0px 0px 3px black;
+}
+      
+.commenticon {
+  height: 8px;
+  width: 12px;
+  margin: auto;
+  text-align: center;
+  vertical-align: center;
+  color: white;
+  font-family: Jura;
+  font-size: 12px;
+}
+      
+.commentcount {
+  color: white;
+  font-family: Jura;
+  font-size: 12px;
+}
+        
+.clickarea {
+    float: left;
+    width: 80%;
+}
+
+</style> 
+    <div class="container" id="outerstorycont">
+      <!--<div class="story">
+        <div class="entrytext">
+          <p class="title">I Saw Something Crawling Down The Cliffside</p>
+          <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+        </div>
+        <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+          <p class="votecount">3333</p>
+          <button id="downvote" class="downvote"></button> </div>
+        <hr class="break"> </div>
+      <div class="story">
+        <div class="entrytext">
+          <p class="title">My grandfather took this secret to his grave - A
+            secret that has haunted my family for 13 generations.</p>
+          <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+        </div>
+        <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+          <p class="votecount">3</p>
+          <button id="downvote" class="downvote"></button> </div>
+        <hr class="break"> </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>
+      <div class="container">
+        <div class="story">
+          <div class="entrytext">
+            <p class="title">I Saw Something Crawling Down The Cliffside</p>
+            <p class="authordate"> By [pen name] on Date<br>
+            [category] | Views | <img class="commenticon" src="comment_icon.png"><label class="commentcount">151</label></p>
+          </div>
+          <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+            <p class="votecount">3</p>
+            <button id="downvote" class="downvote"></button> </div>
+          <hr class="break"> </div>
+      </div>-->
+    </div>
+  </body>
+</html>

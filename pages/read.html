@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <title>Spooked - Read</title>
+    <style>
+  
+.readpage {
+    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5) ), url('background_read.jpg');
+  transition: 0.5s;
+  height: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin-top: 25px;
+}
+
+.storymeta {
+  color: #e0e0e0;
+  text-align: center;
+  font-weight: bold;
+  font-family: Jura;
+  text-shadow: 2px 2px 0px black;
+  
+}
+    
+.title {
+  font-size: 35px;
+  margin-bottom: -10px;
+}
+      
+.author {
+  padding-top: 10px;
+  font-size: 16px;
+  margin-bottom: -15px;
+}
+
+.profilepic {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.stats {
+  font-size: 16px;
+  margin-bottom: -15px;
+  
+}
+      
+.commenticon {
+  width: 24px;
+  height: 16px;
+    vertical-align: middle;
+}
+      
+.share {
+  background: black;
+  width: 95px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 0px 0px 5px #333333, 0px 0px 5px #333333 inset;
+  font-size: 24px;
+  margin-bottom: -20px;
+  border-radius: 15px 15px 15px 15px;
+  vertical-align: middle;
+}
+      
+.usercontrols {
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 15px;
+}
+      
+.postinfo {
+  background: linear-gradient(to right, rgba(0,0,0,0),rgba(0,0,0,0.65),rgba(0,0,0,0.8),rgba(0,0,0,0.65),rgba(0,0,0,0));
+  width: 100%;
+  margin: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+      
+.votes {
+  color: white;  
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  border-style: solid;
+  width: 220px;
+  height: 40px;
+  border-radius: 50px 50px 50px 50px;
+  border: 0;
+  background: linear-gradient(to bottom, black, #333333, black);
+  box-shadow: 0px 0px 1px black, 0px 0px 2px black;
+  vertical-align: middle;
+  background-position: center;
+  padding-top: 3px;
+  
+}
+
+.votecount {
+  color: white;
+  font-family: Jura;
+  font-size: 28px;
+  margin: auto;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+      
+.upvote {
+    width: 32px;
+    height: 32px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-image: url(/images/read/upvote_empty.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 32px 32px;
+    border: none;
+    margin: auto;
+    vertical-align: middle;
+}
+
+.downvote {
+    width: 32px;
+    height: 32px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-image: url(/images/read/downvote_empty.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 32px 32px;
+    border: none;
+    margin: auto;
+    vertical-align: middle;
+}
+      
+.storybody {
+  text-align: justify;
+  color: white;
+  width: 97%;
+  margin: auto;
+}
+      
+.body {
+  font-family: Lato;
+  background: #333333;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 0px 0px 0px 0px;
+  width: 98%;
+  margin: auto;
+  margin-top: 30px;
+  border-style: solid;
+  border-color: #333333;
+  box-shadow: 0px 0px 5px #333333;
+  font-weight: normal;
+  text-shadow: 0px 0px black;
+}
+      
+.break {
+  margin-top: 25px;
+  width: 75%;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(0,100,255,0), white, rgba(0,100,255,0));
+  box-shadow: 1px 1px 0px black;
+  border: 0;
+}
+      
+.commentinput {
+  width: 95%;
+  
+}
+      
+textarea{  
+  overflow: auto;
+  display: block;
+  box-sizing: padding-box;
+  padding: 10px;
+  width: 95%;
+  font-size: 17px;
+  font-family: Lato;
+  margin: 50px auto;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px white;
+  border: 0;
+  background-color: white;
+  text-shadow: 0px 0px 1px black;
+  outline: none;
+  resize: vertical;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+      
+  </style>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <script src="/js/read.js"></script>
+  </head>
+  <body class="readpage">
+    <!--<div class="storymeta">
+      <h1 class="title"> Title of Story </h1>
+      <hr class="break">
+      <div class="postinfo">
+        <h2 class="author"> By [username] <img src="/images/read/testuser.png" class="profilepic">
+        </h2>
+        <p class="stats"> Category | 1231 views | <img class="commenticon" src="/images/read/comment_icon.png">
+          21 </p>
+        <p class="usercontrols"> Edit | Report | Delete </p>
+      </div>
+      <div class="votes"> <button id="upvote" class="upvote" type="image"></button>
+        <label class="votecount">3333</label> <button id="downvote" class="downvote"></button>
+      </div>
+      <hr class="break">
+      <div class="body">
+        <p class="storybody"> “Another body?” “I’m afraid so.” <br>
+          <br>
+          I pressed my ear to the wall and listened. As a brand-new detective, I
+          wasn’t supposed to know any of the good stuff. <br>
+          <br>
+          Homicides. <br>
+          <br>
+          Disappearances. <br>
+          <br>
+          Curious incidents in the night-time. But my office shared a wall with
+          Detective Thompson’s, so I knew it all anyway. <br>
+          <br>
+          “Have you run forensics on it?” Thompson asked. <br>
+          <br>
+          “Yes. The body matches the DNA of John Dudek.”<br>
+          <br>
+          “Again?” <br>
+          <br>
+          “What do you mean, ‘again’?” <br>
+          <br>
+          “Nothing. Thank you, Sandra. That’s all I needed.” <br>
+          <br>
+          Snap. The door shut. Click. The phone was picked up from the receiver.
+          A dial tone, a set of beeps, and then: “Jerry, they found another
+          one.” <br>
+          <br>
+          Thompson’s voice was softer now; I could barely make it out through
+          the wall. <br>
+          <br>
+          “Eight bodies in total.” <br>
+          <br>
+          “Yes, all of them have the same DNA.” <br>
+          <br>
+          Pause. <br>
+          <br>
+          “Same cause of death.” <br>
+          <br>
+          “Sudden cardiac arrest, from a severe arrhythmia of the heart.” <br>
+          <br>
+          I kept my ear glued to the wall for the next several minutes. But all
+          that came through were the thumps of pacing footsteps and the sktch of
+          pencil on paper. Disappointed, I started on the stack of paperwork
+          before me. That night, I was working late. The only person left,
+          besides me, was another detective – Tammy Healy. <br>
+          <br>
+          “Have you heard about Thompson’s case?” I asked, as I came back from
+          the water cooler for the twentieth time. My favorite method of
+          procrastination. <br>
+          <br>
+          “Which one? There are like a thousand.” <br>
+          <br>
+          “The Dudek one.” <br>
+          <br>
+          “Oh. Yeah, I heard something about that. They found all his family
+          members dead in the woods by Kennedy High School, right?” <br>
+          <br>
+          “It’s not his family members,” I said, my voice growing quiet. <br>
+          <br>
+          “It’s him.” <br>
+          <br>
+          “Oh, just he’s dead?” <br>
+          <br>
+          “No. All of the bodies are him.” <br>
+          <br>
+          I leaned back in the chair, fingers steepled. “What? That makes no
+          sense.” <br>
+          <br>
+          “I know. But that’s what I heard, through the wall.” <br>
+          <br>
+          “Maybe Forensics made a mistake. They mess stuff up all the time. Just
+          last week, I asked them to test some coat fibers, and –” <br>
+          <br>
+          “It’s not a mistake.” She looked at me, her eyes narrowed. <br>
+          <br>
+          “Wait. Are you trying to say this is like, something supernatural?” <br>
+          <br>
+          “No! Of course not!” <br>
+          <br>
+          “You’re going to be booted out for running your mouth like this.
+          Thompson has zero tolerance for nonsense –” <br>
+          <br>
+          Thump, thump, thump. <br>
+          <br>
+          Footsteps. <br>
+          <br>
+          I glanced out the window, and caught a glimpse of Thompson’s
+          trenchcoat flapping in the wind behind him. <br>
+          <br>
+          “Sshh! He’s coming!” I flicked off the lights, and motioned for Tammy
+          to follow me into my office. <br>
+          <br>
+          She rolled her eyes, but followed. Thompson entered, with someone
+          else. By the voice, it sounded like a woman. <br>
+          <br>
+          “I can’t hear anything they’re saying,” Tammy whispered, crouching low
+          against the wall. <br>
+          <br>
+          “And we could get in a lot of trouble for this, you know.” But then a
+          wave of shouting erupted. <br>
+          <br>
+          “Yes, of course I know Dudek is alive. I went and visited him, after
+          the first body came in.” <br>
+          <br>
+          “But did you know he had a health condition?” the woman asked. <br>
+          <br>
+          “No. What’s that got to do with anything?” <br>
+          <br>
+          “He had an arrhythmia, Roger.” I pushed my ear harder against the
+          wall. <br>
+          <br>
+          “Had?” <br>
+          <br>
+          “Well, it was fixed. With the pacemaker he had installed on March
+          22nd.” <br>
+          <br>
+          Tammy and I looked at each other. <br>
+          <br>
+          “That’s the day before the first body was found,” she whispered. </p>
+        <hr class="break">
+      </div>
+      <p> End <br><br>Share this story:<br>(add share button or buttons, whatever is most efficient)</p>
+      <div class="commentarea">
+        <hr class="break">
+        <p> Leave a comment </p>
+        <textarea id="comment" class="autoExpand" rows="5" data-min-rows="5" placeholder="Tell Your Story"
+
+minlength="500" required="">        </textarea>
+        <hr class="break"> </div>
+      <p style="text-align: left; margin-left: 5%;"> 21 comments: </p>
+      Comments go here
+      <hr class="break"> </div>-->
+    
+  </body>
+</html>

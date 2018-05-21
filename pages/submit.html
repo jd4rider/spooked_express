@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Submit Form</title>
+  </head>
+  <body style="                margin-top: 12px; background-color: black;" id="submitarea"
+
+    class="submitarea">
+    <div id="mySidenav" class="sidenav"> <a href="javascript:void(0)"
+
+        class="closebtn" onclick="closeNav()"></a> <a href="loginpage.html" class="loginpage"></a>
+      <label class="loginlabel">Login</label> <a href="feedpage.html" class="feedpage"></a>
+      <label class="readlabel">Read</label> <a href="submitpage.html" class="submitpage"></a>
+      <label class="submitlabel">Submit</label> </div>
+
+    <script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "75px";
+    document.getElementById("main").style.marginLeft = "75px";
+    document.getElementById("submitarea").style.marginLeft = "90px";
+    document.body.style.backgroundColor = "black";
+    document.getElementById("menubutton").style.width = "0";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("submitarea").style.marginLeft = "0";
+    document.body.style.backgroundColor = "black";
+    document.getElementById("menubutton").style.width = "50px";
+}
+  </script>
+    <title></title>
+    <style type="text/css">
+      
+.loginlabel {
+  text-align: center;
+  margin-left: 12px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.readlabel {
+  text-align: center;
+  margin-left: 14px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.submitlabel {
+  text-align: center;
+  margin-left: 6px;
+  margin-top: 350px;
+  font-family: Jura;
+  font-size: 19px;
+  color: white;
+}
+      
+.loginpage {
+    background-image: url(login.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: 0px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+      
+.feedpage {
+    background-image: url(read.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+      
+.submitpage {
+    background-image: url(submit.png);
+    height: 34px;
+    width: 34px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1002;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+
+.menubutton {
+    background-image: url(https://www.ap.org/about/annual-report/2016/globals/icons/svg/icon-menu/icon-menu-transparent.svg);
+    height: 50px;
+    width: 50px;
+    left: 15px;
+    margin-top: 5px;
+    z-index: 1001;
+}
+      
+.closebtn {
+    background-image: url(https://www.ap.org/about/annual-report/2016/globals/icons/svg/icon-menu/icon-menu-transparent.svg);
+    height: 34px;
+    width: 34px;
+    background-repeat: no-repeat;
+    left: -37px;
+    z-index: 1001;
+
+}
+
+.sidenav {
+    z-index: 1001;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+      z-index: 1001;
+
+}
+
+.sidenav a:hover {
+    color: green;
+      z-index: 1001;
+
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+      z-index: 1001;
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+.submitarea {
+  background: url(/images/submit/background_submit.jpg);
+  transition: 0.5s;
+  height: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin-top: 25px;
+}
+
+button[type=button] {
+    outline: none;
+    width: 6.5%;
+    height: 21px;
+    font-family: Roboto;
+    color: rgb(247, 244, 245);
+    background-color: rgb(255, 54, 144);
+    border: initial;
+    overflow: hidden;
+    margin-bottom: -100px;
+    box-shadow: 0px 0px 5px white;
+    text-shadow: 0px 0px 15px white;
+    box-shadow: 0px 0px 5px white inset;
+    background-color: rgb(255, 255, 255);
+    border: initial;
+    border-radius: 80px;
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to right, rgb(2, 17, 29), #7a0000, rgb(2, 17, 29));
+    background: transparent;
+    border: none;
+    outline: none;
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+}
+
+textarea{  
+  overflow: auto;
+  display: block;
+  box-sizing: padding-box;
+  padding: 10px;
+  width: 95%;
+  font-size: 17px;
+  font-family: Lato;
+  margin: 50px auto;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px white;
+  border: 0;
+  background-color: white;
+  text-shadow: 0px 0px 1px black;
+  outline: none;
+  resize: vertical;
+
+}
+
+label {
+    color: white;
+}
+
+h1 {
+    color: gray;
+    font-family: Jura;
+    text-shadow: 0px 0px 2px black, 0px 0px 2px black;
+}
+
+h2 {
+    color: gray;
+    font-family: Jura;
+    font-size: 25px
+    text-shadow: 0px 0px 3px black, 0px 0px 3px black;
+}
+
+p {
+    color: white;
+    font-family: Lato;
+
+}
+
+form {
+    font-family: Lato;
+}
+
+input { 
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    text-shadow: 0px 0px 1px white;
+}
+
+input[type=text] {
+    width: 95%;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+    
+}
+
+input[type=mail] {
+    width: 95%;
+    height: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+button[type=submit] {
+    outline: none;
+    width: 100%;
+    height: 65px;
+    font-family: Jura;
+    color: rgb(247, 244, 245);
+    background-color: rgb(255, 54, 144);
+    border: initial;
+    border-radius: 4px;
+    background-image: linear-gradient(to right, rgb(2, 17, 29), #7a0000, rgb(2, 17, 29));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-height: 1.2;
+    -webkit-writing-mode: horizontal-tb !important;
+    box-shadow: 0px 0px 10px white;
+    -webkit-gradient(linear, left top, left bottom, from(black), to(black)) no-repeat bottom;
+
+}
+
+button[type=reset] {
+    outline: none;
+    width: 100%;
+    height: 65px;
+    font-family: Jura;
+    
+    background-color: rgb(255, 54, 144);
+    border: initial;
+    border-radius: 4px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-height: 1.2;
+    -webkit-writing-mode: horizontal-tb !important;
+    box-shadow: 0px 0px 10px white;
+    -webkit-gradient(linear, left top, left bottom, from(black), to(black)) no-repeat bottom;
+    background-color: rgb(255, 255, 255);
+    
+    
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to right, rgb(2, 17, 29), #7a0000, rgb(2, 17, 29));
+
+}
+
+
+input[type=checkbox] {
+      outline: none;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+    border-radius: 0%;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #a0a0a0;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #4f4f4f;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #0a0a0a;
+}
+
+/* The container */
+.box {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.box:hover input ~ .checkmark {
+    background-color: #a0a0a0;
+}
+
+/* When the checkbox is checked, add a blue background */
+.box input:checked ~ .checkmark {
+    background-color: #4f4f4f;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.box input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.box .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.box {
+    font-size: 18px;
+}
+
+.form {
+
+  margin-top: -50px;
+  width: 92%;
+  margin: auto;
+}
+
+.menubutton {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  margin-left: -2px;
+  margin-top: 0%;
+  z-index: 1000;
+  top: 0px;
+  overflow: hidden;
+}
+
+.menucontainer {
+  width: 100%;
+  height: 50px;
+  margin-left: -8px;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  background-color: gray;
+  bgcolor: gray;
+  z-index: 100;
+  background-image: url(background_menu.jpg);
+  box-shadow: 0px 0px 25px black;
+  background-size: 100% auto;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.logotext {
+  text-align: center;
+  font-family: Jura;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 7px;
+  text-shadow: 0px 0px 4px black, 0px 0px 3px black;
+}
+
+</style> <form id="myform" method="post" action="#" class="form">
+      <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+      <center>
+        <h1>Submit Your Story</h1>
+      </center>
+      <hr style="font-size: 12px;border: 0;height: 1px;background-image: linear-gradient(to right, #110F12, #ccc, #110F12);">
+      <p style="font-size: 18px;text-align: center;margine:auto;" ;="">You're
+        about to post a story to the public.<br>
+        Follow these rules or you WILL be banned:</p>
+      <p style="text-align: jusitfy;font-size:14px;width:80%;font-color:gray;margin:auto;">-
+        Every story in Speculate is 'real' - play along and don't be rude.</p>
+      <p style="text-align: jusitfy;font-size:14px;width:80%;font-color:gray;margin:auto;">-
+        Add paragraphs and punctuation. No one wants to read a wall of text.<br>
+        - Do not add READ THIS or any other obnoxious begging in your titles.
+        This includes all caps or superfluous punctuation marks.<br>
+        - Do not bully, target, or harass others.<br>
+        - True Stories should be realistic. You can have werewolves, but not
+        flying werewolves that drop candy from the sky.<br>
+        - Copying content from anyone from anywhere on the internet is
+        infringement and you WILL be banned.</p>
+      <br>
+      <hr style="width: 50%; border: 0;height: 1px;background-image: linear-gradient(to right, #110F12, #ccc, #110F12);">
+      <h2>Pen Name*</h2>
+      <input id="penname" required="" type="text">
+      <div>
+        <hr style="position: relative;left: -10px; border: 0;height: 2px;background-image: linear-gradient(to right, #ccc, #ccc, #110F12);"></div>
+      <h2>Title of Story*</h2>
+      <input id="title" maxlength="50px" required="" type="text">
+      <div>
+        <hr style="position: relative;left: -10px; border: 0;height: 2px;background-image: linear-gradient(to right, #ccc, #ccc, #110F12);"></div>
+      <h2>Story Type*</h2>
+      <label class="container">Fictional Story <input id="fictional" name="category"
+
+          required="" type="radio"> <span class="checkmark"></span></label> <label
+
+        class="container">True Story <input id="true" name="category" type="radio">
+        <span class="checkmark"></span></label>
+      <hr style="position: relative; left: -10px; margin-top: 0px; border: 0;height: 2px;background-image: linear-gradient(to right, #ccc, #ccc, #110F12);">
+      <h2>Category:*<button type="button" style="width: 21px;" onclick="alert('What is your story about?\n\nParanormal stories consist of encounters with entities or events that are not solid or defy explanation. This includes Ghosts, UFOs, and Demons.\n\nMonster stories consist of encounters with entities that are solid. This includes Bigfoot, Chupacabra, and the Loch Ness Monster.\n\nPeople stories consist of encounters with creepy people or non-paranormal things. This includes Stalkers, Serial Killers, and Near Death Experiences concerning human on human or human on artifical construct contact.')">?</button></h2>
+      <div> <label class="container">Paranormal <input id="para" name="radio"
+
+            type="radio"> <span class="checkmark"></span> </label> <label class="container">Monsters
+          <input id="mons" name="radio" type="radio"> <span class="checkmark"></span>
+        </label> <label class="container">People <input id="people" name="radio"
+
+            type="radio"> <span class="checkmark"></span> </label>
+        <hr style="position: relative; left: -10px; margin-top: 5px; margin-bottom: -30px; border: 0;height: 2px;background-image: linear-gradient(to right, #ccc, #ccc, #110F12);"><br>
+      </div>
+      <div> <textarea id="story" class="autoExpand" rows="5" data-min-rows="5"
+
+placeholder="Tell Your Story" minlength="500" required=""></textarea> <label class="box"
+
+          style=""> <input style="margine-right: -25px;" required="" type="checkbox" id="agree">
+          <span class="checkmark"></span> </label>
+        <p style="margin-left: 32px; font-size: 17px;">I agree to the terms and
+          conditions.* <button type="button" style="width: 21px;" onclick="alert('Terms and Conditions:\n\nBy submitting your story with this form, you are allowing Brenden Dean and any of his collaborators to edit, publish, and/or produce your story on their websites, social media profiles, and/or youtube channels for commercial purposes or otherwise.\n\nYou retain full rights to the story, hereby meaning you may publish, share, change, produce, sell, or do as you please with this story anywhere else with anyone else.\n\nStory submissions that are found to be in violation of the rules of our forum may be removed at anytime, and any violations may result in immediate, permanent ban.\n\nWe do not allow content that is intended to bully, harass, troll, inspire hate, or content that shocks for the sake of shock rather than storytelling.\n\n')">?</button></p>
+        <br>
+        <button type="submit" style="font-size:26px">Submit</button> <span><button
+
+            type="reset" style="float: left;font-size:20px; margin-top: 12px;margin-bottom: 12px;width:49%;height:35px;background-image: linear-gradient(to right, rgb(2, 17, 29), rgb(2, 17, 29), rgb(2, 17, 29));box-shadow: 0px 0px 4px white;">Clear
+            Form</button> <button type="button" style="float: right;font-size:20px; margin-top: 12px;margin-bottom: 12px;outline: none; width: 49%;height: 35px;font-family: Jura;color: rgb(247, 244, 245);background-color: rgb(255, 54, 144);border: initial;border-radius: 4px;background-image: linear-gradient(to right, rgb(2, 17, 29), rgb(2, 17, 29), rgb(2, 17, 29));overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;line-height: 1.2;-webkit-writing-mode: horizontal-tb !important;box-shadow: 0px 0px 4px white;-webkit-gradient(linear, left top, left bottom, from(black), to(black)) no-repeat bottom;text-shadow: 0px 0px 1px black;">Save
+            and Exit</button></span>
+        <hr style="margin-top: 60px; border: 0;height: 1px;background-image: linear-gradient(to right, #110F12, #ccc, #110F12);">
+        <!--<form action="/action_page.php">--> </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+
+crossorigin="anonymous"></script>
+    <script src="/js/submit.js"></script>
+    <!--<script>
+/*$(function() {
+    //hang on event of form with id=myform
+    $("#myform").submit(function(e) {
+      
+      e.preventDefault();
+      yay();
+
+    });
+
+});
+
+function yay(){
+ var storytype;
+ var category;
+  if($('#fictional').is(':checked')) storytype = 'Fictional Story';
+  else if($('#true').is(':checked')) storytype = 'True Story';
+  
+  if($('#para').is(':checked')) category = 'Paranormal';
+  else if($('#mons').is(':checked')) category = 'Monsters';
+  else if($('#people').is(':checked')) category = 'People';
+  //do your own request an handle the results
+        $.ajax({
+                url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({"penname": $('#penname').val(), "storytype": storytype, "category": category, "story": $('#story').val() }),
+                success: function(data) {
+                    //... do something with the data...
+                  console.log(data);
+                }
+        });
+}*/
+</script>-->
+  </body>
+</html>
