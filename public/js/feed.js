@@ -47,14 +47,16 @@ $.ajax({
     }
 })
 
-
+//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/" + storyid + "?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 function upvote(e, storyid){
     e.stopPropagation();
     console.log("Upvote");
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        method: 'get',
+        url: '/obtainvotes',
+        method: 'post',
+        data: {'id': storyid},
         success: function(data){
+            data = data[0];
             console.log(data.votes);
             console.log(data.voters);
             var voters = data.voters;
@@ -80,9 +82,12 @@ function downvote(e, storyid){
     e.stopPropagation();
     console.log("Downvote");
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        method: 'get',
+        url: '/obtainvotes',
+        method: 'post',
+        data: { 'id': storyid },
         success: function(data){
+            console.log(data);
+            data = data[0];
             console.log(data.votes);
             console.log(data.voters);
             var voters = data.voters;
@@ -104,17 +109,22 @@ function downvote(e, storyid){
     })
 }
 
+//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyID+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 function updatestoryvotes(votes, voters, votetype, storyID){
+    $('.votecount#' + storyID).html(votes);
+    runupdatevotes();
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyID+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        type: 'put',
+        url: '/updatevotes',
+        type: 'post',
         contentType: 'application/json',
-        data: JSON.stringify({ "$set" : {"votes": votes, "voters": voters, "votetype": votetype}}),
+        data: JSON.stringify({"id": storyID, "votes": votes, "voters": voters, "votetype": votetype}),
         success: function(data) {
             //... do something with the data...
           console.log(data);
-          $('.votecount#'+storyID ).html(votes);
-          runupdatevotes();
+          console.log(votes);
+            console.log($('.votecount#' + storyID).html());
+          //$('.votecount#'+storyID ).html(votes);
+          //runupdatevotes();
 
         }
     }); 

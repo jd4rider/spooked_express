@@ -75,6 +75,40 @@ app.get('/feedinfo', (req,res) => {
     })
 })
 
+app.post('/obtainvotes', (req, res) => {
+    //console.log(req.body)
+    db.collection('darknessprevailssubmissions').find({ '_id': new ObjectID(req.body.id) }).toArray((err, results) => {
+        if (results.length) {
+            res.contentType('application/json');
+            var data = JSON.stringify(results)
+            res.header('Content-Length', data.length);
+            console.log(data);
+            res.end(data);
+        }
+    })
+})
+
+app.post('/updatevotes', (req, res) => {
+    console.log(req.body)
+    db.collection('darknessprevailssubmissions').update(
+        { '_id': new ObjectID(req.body.id) },
+        {
+            $set:
+                {
+                    "votes": req.body.votes, "voters": req.body.voters, "votetype": req.body.votetype
+                }
+        }, (err, results) => {
+            if (results.length) {
+                res.contentType('application/json');
+                var data = JSON.stringify(results)
+                res.header('Content-Length', data.length);
+                console.log(data);
+                res.end(data);
+            }
+        }
+    )
+})
+
 app.post('/getlogin', (req, res) => {
     finduserwithemail(req.body, res); 
 })
