@@ -75,6 +75,18 @@ app.get('/feedinfo', (req,res) => {
     })
 })
 
+app.post('/obtainstory', (req, res) => {
+    console.log(req.body.id);
+    db.collection('darknessprevailssubmissions').find({'_id': new ObjectID(req.body.id)}).toArray((err, results) => {
+        if (results.length) {
+            res.contentType('application/json');
+            var data = JSON.stringify(results);
+            res.header('Content-Length', data.length);
+            res.end(data);
+        }
+    })
+})
+
 app.post('/obtainvotes', (req, res) => {
     //console.log(req.body)
     db.collection('darknessprevailssubmissions').find({ '_id': new ObjectID(req.body.id) }).toArray((err, results) => {
@@ -82,7 +94,7 @@ app.post('/obtainvotes', (req, res) => {
             res.contentType('application/json');
             var data = JSON.stringify(results)
             res.header('Content-Length', data.length);
-            console.log(data);
+            console.log(data);  
             res.end(data);
         }
     })

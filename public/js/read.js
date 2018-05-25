@@ -17,10 +17,14 @@ try {
     var storyid = parse_query_string(location.search.substring(1))["id"];
 }
 
+//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 $.ajax({
-	url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-	method: 'get',
+	url: '/obtainstory',
+    method: 'post',
+    data: {"id": storyid },
 	success: function(data){
+        console.log(data);
+        data = data[0]
         console.log('works');
         console.log(data);
         var text = data.story;
