@@ -57,7 +57,7 @@ function yay(){
     $.ajax({
             type: 'post',
             contentType: 'application/json',
-            data: JSON.stringify({"user": username, "title": $('#title').val(), "penname": $('#penname').val(), "storytype": storytype, "category": category, "story": $('#story').val(), "trmcnd": trmcnd, "votes": 0, "voters": [], "votetype": [],  "submitdate": date1, "views": [] }),
+            data: JSON.stringify({"user": username, "title": $('#title').val(), "penname": username, "storytype": storytype, "category": category, "story": $('#story').val(), "trmcnd": trmcnd, "votes": 0, "voters": [], "votetype": [],  "submitdate": date1, "views": [] }),
             url: "/posts",
             error: function(err) {
                 console.log(err);
