@@ -33,6 +33,7 @@ console.log('May Node be with you')
 
 app.use(express.static(__dirname + '/public'));
 
+//navigation
 app.get('/', function(req, res){
     //res.send('Hello World')
     res.sendFile(__dirname + '/pages/submit.html')
@@ -64,6 +65,7 @@ app.get('/feed.html', function (req, res) {
     res.sendFile(__dirname + '/pages/feed.html')
 })
 
+//API controllers
 app.get('/feedinfo', (req,res) => {
     db.collection('darknessprevailssubmissions').find().sort({ 'submitdate': -1 }).toArray((err, results) => {
         if(results.length) {
@@ -98,6 +100,32 @@ app.post('/obtainvotes', (req, res) => {
             res.end(data);
         }
     })
+})
+
+app.post('/obtaincomments', (req, res) => {
+    //console.log(req.body);
+    var resultsss = db.collection('comments').find({ 'storyid': req.body.id })
+    if (resultsss == null){
+        res.end('No Comments');
+    }
+    else {
+        db.collection('comments').find({ 'storyid': req.body.id }).toArray((err, results) => {
+            if (err) {
+                res.end('No Comments');
+            }
+
+            if (results.length) {
+                res.contentType('application/json');
+                var data = JSON.stringify(results);
+                res.header('Content-Length', data.length);
+                res.end(data);
+            } else {
+                res.end('No Comments');
+            }
+
+            
+        })
+    } 
 })
 
 app.post('/updatevotes', (req, res) => {
@@ -159,6 +187,24 @@ app.post('/posts', (req,res) => {
         var data = JSON.stringify('/read.html?id=' + result.ops[0]._id)
         res.header('Content-Length', data.length);
         res.end(data); 
+
+
+    })
+})
+
+app.post('/comments', (req, res) => {
+    console.log(JSON.stringify(req.body));
+    db.collection('comments').save(req.body, (err, result) => {
+        if (err) return console.log(err)
+
+        console.log('saved submission to database');
+        console.log(result.ops[0]._id);
+
+        //req.method = 'get';
+        res.contentType('application/json');
+        var data = JSON.stringify('/read.html?id=' + result.ops[0]._id)
+        res.header('Content-Length', data.length);
+        res.end(data);
 
 
     })

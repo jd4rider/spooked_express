@@ -4,6 +4,8 @@ if(window.localStorage.username == null){
     var username = window.localStorage.username;
 }
 
+var commentcount = 0;
+
 var url_string = window.location.href
 var url = new URL(url_string);
 //var storyid = url.searchParams.get("id"); 
@@ -16,6 +18,8 @@ try {
     //var username = parse_query_string(location.search.substring(1))["username"];
     var storyid = parse_query_string(location.search.substring(1))["id"];
 }
+
+//getcomments();
 
 $.ajax({
 	url: '/obtainstory',
@@ -54,16 +58,60 @@ $.ajax({
             <textarea id="comment" class="autoExpand" rows="5" data-min-rows="5" placeholder="Tell Your Story"
 
         minlength="500" required="">        </textarea>
+            <center><button type="button" style="font-size:20px; margin-top: 12px;margin-bottom: 12px;outline: none; width: 49%;height: 35px;font-family: Jura;color: rgb(247, 244, 245);background-color: rgb(255, 54, 144);border: initial;border-radius: 4px;background-image: linear-gradient(to right, rgb(2, 17, 29), rgb(2, 17, 29), rgb(2, 17, 29));overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;line-height: 1.2;-webkit-writing-mode: horizontal-tb !important;box-shadow: 0px 0px 4px white;-webkit-gradient(linear, left top, left bottom, from(black), to(black)) no-repeat bottom;text-shadow: 0px 0px 1px black;" onclick="submitcomment()">Submit Comment</button></center>
             <hr class="break"> </div>
-          <p style="text-align: left; margin-left: 5%;"> 21 comments: </p>
-          Comments go here
+          <p style="text-align: left; margin-left: 5%;" id='commentcounter'></p>
+          <div id='commentshere'></div>
           <hr class="break"> </div>`
 		)
 	},
     complete: function(){
-        runupdatevotes();    
+        runupdatevotes();  
+        getcomments();  
     }
 })
+
+function submitcomment(){
+    $.ajax({
+        url: '/comments',
+        method: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({ "storyid": storyid, "userid": username, "comment": $('#comment').val().trim() }),
+        success: function (data) {
+            $('#comment').val('');
+            getcomments();
+        }
+    })
+}
+
+function getcomments() {
+    $.ajax({
+        url: '/obtaincomments',
+        method: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({ "id": storyid }),
+        success: function (data) {
+            console.log(data);
+            $('#commentcounter').html(' ' + commentcount + ' comments: ')
+            if(data != 'No Comments'){
+                var commentsresults = '';
+                commentcount = data.length;
+                for(i in data){
+                    commentsresults += `
+                        <h3><strong>`+data[i].userid+`</strong></h3>
+                        <p>`+data[i].comment+`</p>
+                        <hr style="width: 50%; border: 0;height: 1px;background-image: linear-gradient(to right, #110F12, #ccc, #110F12);">
+                    `
+                }
+                //console.log
+                $('#commentshere').html(commentsresults);
+                $('#commentcounter').html(' ' + commentcount + ' comments: ')
+            }
+        }
+    })
+}
+
+
 
 function upvote(e, storyid){
     e.stopPropagation();
