@@ -4,7 +4,6 @@ if(window.localStorage.username == null){
     var username = window.localStorage.username;
 }
 
-//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions?s={'submitdate':-1}&apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 $.ajax({
 	url: "/feedinfo",
     method: 'get',
@@ -47,7 +46,6 @@ $.ajax({
     }
 })
 
-//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/" + storyid + "?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 function upvote(e, storyid){
     e.stopPropagation();
     console.log("Upvote");
@@ -109,7 +107,6 @@ function downvote(e, storyid){
     })
 }
 
-//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyID+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 function updatestoryvotes(votes, voters, votetype, storyID){
     $('.votecount#' + storyID).html(votes);
     runupdatevotes();

@@ -17,7 +17,6 @@ try {
     var storyid = parse_query_string(location.search.substring(1))["id"];
 }
 
-//"https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 $.ajax({
 	url: '/obtainstory',
     method: 'post',
@@ -70,9 +69,11 @@ function upvote(e, storyid){
     e.stopPropagation();
     console.log("Upvote");
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        method: 'get',
+        url: '/obtainvotes',
+        method: 'post',
+        data: { 'id': storyid },
         success: function(data){
+            data = data[0];
             console.log(data.votes);
             console.log(data.voters);
             var voters = data.voters;
@@ -97,9 +98,11 @@ function downvote(e, storyid){
     e.stopPropagation();
     console.log("Downvote");
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        method: 'get',
+        url: '/obtainvotes',
+        method: 'post',
+        data: { 'id': storyid },
         success: function(data){
+            data=data[0];
             console.log(data.votes);
             console.log(data.voters);
             var voters = data.voters;
@@ -121,25 +124,26 @@ function downvote(e, storyid){
 }
 
 function updatestoryvotes(votes, voters, votetype, storyID){
+    $('.votecount').html(votes);
+    if (votes == 0) {
+        $('.upvote').css('background-image', 'url(/images/read/upvote_empty.png)');
+        $('.downvote').css('background-image', 'url(/images/read/downvote_empty.png)');
+    } else if (votes < 0) {
+        $('.upvote').css('background-image', 'url(/images/read/upvote_empty.png)');
+        $('.downvote').css('background-image', 'url(/images/read/downvote_clicked.png)');
+    } else if (votes > 0) {
+        $('.upvote').css('background-image', 'url(/images/read/upvote_clicked.png)');
+        $('.downvote').css('background-image', 'url(/images/read/downvote_empty.png)');
+    }
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyID+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        type: 'put',
+        url: '/updatevotes',
+        type: 'post',
         contentType: 'application/json',
-        data: JSON.stringify({ "$set" : {"votes": votes, "voters": voters, "votetype": votetype}}),
+        data: JSON.stringify({ "id": storyID, "votes": votes, "voters": voters, "votetype": votetype }),
         success: function(data) {
             //... do something with the data...
           console.log(data);
-          $('.votecount').html(votes);
-          if(votes == 0){ 
-              $('.upvote').css('background-image', 'url(/images/read/upvote_empty.png)');
-              $('.downvote').css('background-image', 'url(/images/read/downvote_empty.png)');
-          } else if(votes < 0) {
-              $('.upvote').css('background-image', 'url(/images/read/upvote_empty.png)');
-              $('.downvote').css('background-image', 'url(/images/read/downvote_clicked.png)');
-          } else if(votes > 0) {
-              $('.upvote').css('background-image', 'url(/images/read/upvote_clicked.png)');
-              $('.downvote').css('background-image', 'url(/images/read/downvote_empty.png)');
-          }
+          
 
         }
     }); 
@@ -147,24 +151,25 @@ function updatestoryvotes(votes, voters, votetype, storyID){
 
 function getviews(storyid){
     $.ajax({
-	url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyid+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-	method: 'get',
-	success: function(data){
-        var views = data.views;
-        if(views.indexOf(username) < 0){
-            views.push(username);
-            updateview(views, storyid);
-        }
+        url: '/obtainstory',
+        method: 'post',
+        data: { "id": storyid },
+	    success: function(data){
+            var views = data[0].views;
+            if(views.indexOf(username) < 0){
+                views.push(username);
+                updateview(views, storyid);
+            }
 	}
 })
 }
 
 function updateview(views, storyID){
     $.ajax({
-        url: "https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions/"+storyID+"?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ",
-        type: 'put',
+        url: "/updateviews",
+        type: 'post',
         contentType: 'application/json',
-        data: JSON.stringify({ "$set" : {"views": views}}),
+        data: JSON.stringify({"views": views, "id": storyID}),
         success: function(data) {
             //... do something with the data...
           console.log(data);

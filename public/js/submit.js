@@ -20,7 +20,6 @@ if(window.localStorage.username == null){
         var salt = parse_query_string(location.search.substring(1))["salt"];
     }
     
-    //https://api.mlab.com/api/1/databases/darknessprevails/collections/users?q={'username':'"+username+"', 'salt':'"+sha1(salt)+"'}&apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ
     if(username == null || salt == null){
         window.location.href = '/login.html';
     } 
@@ -55,7 +54,6 @@ function yay(){
 
   trmcnd = ($('#agree').is(':checked'));
   //do your own request and handle the results
-  //https://api.mlab.com/api/1/databases/darknessprevails/collections/darknessprevailssubmissions?apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ
     $.ajax({
             type: 'post',
             contentType: 'application/json',

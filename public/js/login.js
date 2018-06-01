@@ -115,7 +115,6 @@ function loaddatabaseuser(data){
     doesuserexist(data);
 }
 
-//"https://api.mlab.com/api/1/databases/darknessprevails/collections/users?q={'username':'"+String(data.username)+"'}&apiKey=aDwl-yLfA68HFnJWjDsZmF8akGTu3lKJ"
 function doesuserexist(data){    
     $.ajax({
         url: '/getlogin',

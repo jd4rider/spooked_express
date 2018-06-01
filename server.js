@@ -121,6 +121,27 @@ app.post('/updatevotes', (req, res) => {
     )
 })
 
+app.post('/updateviews', (req, res) => {
+    console.log(req.body)
+    db.collection('darknessprevailssubmissions').update(
+        { '_id': new ObjectID(req.body.id) },
+        {
+            $set:
+                {
+                    "views": req.body.views
+                }
+        }, (err, results) => {
+            if (results.length) {
+                res.contentType('application/json');
+                var data = JSON.stringify(results)
+                res.header('Content-Length', data.length);
+                console.log(data);
+                res.end(data);
+            }
+        }
+    )
+})
+
 app.post('/getlogin', (req, res) => {
     finduserwithemail(req.body, res); 
 })
