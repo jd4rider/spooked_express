@@ -64,6 +64,7 @@ function yay(){
             },
             success: function(data) {
                 //... do something with the data...
+                window.localStorage.setItem('username', data[0].username);
                 console.log(data);
                 $('#myform')[0].reset();
                 window.location = data;
