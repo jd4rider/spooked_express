@@ -22,7 +22,9 @@ if(window.localStorage.username == null){
     
     if(username == null || salt == null){
         window.location.href = '/login.html';
-    } 
+    } else {
+        window.localStorage.setItem('username', username);
+    }
 }else{
     var username = window.localStorage.username;
 }
