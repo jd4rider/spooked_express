@@ -1,3 +1,5 @@
+const dotenv = require('dotenv').config()
+//const dotenvres = dotenv.config()
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -5,9 +7,13 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID;
 
-const MONGO_USER = 'spookedapp';
+if(dotenv.error) throw dotenv.error;
 
-const MONGO_PASSWORD = 'SammyBear93!';
+console.log(dotenv.parsed);
+
+const MONGO_USER = process.env.MONGO_USER;
+
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 
 const MONGO_URL = 'mongodb://'+MONGO_USER+':'+MONGO_PASSWORD+'@ds237409.mlab.com:37409/darknessprevails';
 
