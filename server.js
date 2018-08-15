@@ -1,6 +1,13 @@
 const dotenv = require('dotenv').config()
-//const dotenvres = dotenv.config()
 const express = require('express');
+
+// ES5 - Auth0
+const expressAuth0Simple = require('express-auth0-simple');
+const passport = require('passport');
+// you might need these middleware aswell
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
@@ -9,7 +16,34 @@ const ObjectID = require('mongodb').ObjectID;
 
 if(dotenv.error) throw dotenv.error;
 
-console.log(dotenv.parsed);
+// register cookie and session middlewares
+app.use(cookieParser());
+app.use(
+    session(
+        {
+            secret: 'keyboard cat',
+            resave: false,
+            saveUninitialized: true,
+            cookie: {}
+        }
+    )
+);
+// register passportjs middlewares
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
+const auth = new expressAuth0Simple.ExpressAuth0Middleware(
+    { callbackURL: '/auth/callback' }
+);
 
 const MONGO_USER = process.env.MONGO_USER;
 
@@ -33,20 +67,23 @@ MongoClient.connect(MONGO_URL, (err, client) => {
 })
 console.log('May Node be with you')
 
-/* app.listen(process.env.PORT || 3000, function (){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-}) */
+// this is the login route
+app.get('/auth/callback', auth.authCallbackMiddleware, auth.authCallbackHandler, function (req, res) 
+{
+    res.redirect("/")
+});
+
+// any additional routes declared below this point require login to access
+app.use(auth.requiresLogin);
 
 app.use(express.static(__dirname + '/public'));
 
 //navigation
 app.get('/', function(req, res){
-    //res.send('Hello World')
     res.sendFile(__dirname + '/pages/submit.html')
 })
 
 app.get('/login.html', function (req, res) {
-    //res.send('Hello World')
     res.sendFile(__dirname + '/pages/login.html')
 })
 
@@ -61,13 +98,11 @@ app.get('/submit.html', function (req, res) {
 })
 
 app.get('/read.html', function (req, res) {
-    //res.send('Hello World')
     res.sendFile(__dirname + '/pages/read.html', { 'id': req.query.id })
     console.log(req.query)
 })
 
 app.get('/feed.html', function (req, res) {
-    //res.send('Hello World')
     res.sendFile(__dirname + '/pages/feed.html')
 })
 
@@ -96,7 +131,6 @@ app.post('/obtainstory', (req, res) => {
 })
 
 app.post('/obtainvotes', (req, res) => {
-    //console.log(req.body)
     db.collection('darknessprevailssubmissions').find({ '_id': new ObjectID(req.body.id) }).toArray((err, results) => {
         if (results.length) {
             res.contentType('application/json');
@@ -109,7 +143,6 @@ app.post('/obtainvotes', (req, res) => {
 })
 
 app.post('/obtaincomments', (req, res) => {
-    //console.log(req.body);
     var resultsss = db.collection('comments').find({ 'storyid': req.body.id })
     if (resultsss == null){
         res.end('No Comments');
@@ -188,7 +221,6 @@ app.post('/posts', (req,res) => {
         console.log('saved submission to database');
         console.log(result.ops[0]._id);
 
-        //req.method = 'get';
         res.contentType('application/json');
         var data = JSON.stringify('/read.html?id=' + result.ops[0]._id)
         res.header('Content-Length', data.length);

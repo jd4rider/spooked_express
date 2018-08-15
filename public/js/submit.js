@@ -7,7 +7,7 @@ CDN Link: https://dl.dropbox.com/s/0tzktfzq502vd9e/darknessprevailssubmit.js
 Link to debug: https://horrorcast.goodbarber.com/pview/horrorcast/custom-submit
 */
 
-if(window.localStorage.username == null){
+/* if(window.localStorage.username == null){
     var url_string = window.location.href;
     var url = new URL(url_string);
     console.log(url_string);
@@ -27,7 +27,7 @@ if(window.localStorage.username == null){
     }
 }else{
     var username = window.localStorage.username;
-}
+} */
 
 $(function() {
     //hang on event of form with id=myform
